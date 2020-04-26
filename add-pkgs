@@ -1,0 +1,19 @@
+#!/bin/sh
+apk update --no-cache
+
+apk add --no-cache \
+    alpine-sdk ruby ruby-dev ruby-bundler graphviz ruby-nokogiri \
+    unzip findutils which wget python-dev zlib-dev \
+    patch sudo bash libjpeg-turbo libjpeg-turbo-dev \
+    nodejs npm sqlite sqlite-dev sqlite-libs
+
+curl -L -o elm.gz https://github.com/elm/compiler/releases/download/0.19.1/binary-for-linux-64-bit.gz
+gunzip elm.gz
+mv -v elm /usr/bin
+chmod a+x /usr/bin/elm
+npm install -g --unsafe elm-test
+
+echo ""
+echo "add pkg script completed"
+echo ""
+

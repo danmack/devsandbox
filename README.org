@@ -1,0 +1,39 @@
+* develop elm in a container template
+
+This project demonstrates how one can do elm (or other languages) software
+development without tainting or putting your laptop/workstation at risk from all
+the dependencies.
+
+This examples relies on using podman on linux used in the non-root mode.  All
+the software is downloaded implicitly or explicitly within the container only.
+
+Elm itself doesn't have many dependencies per-se, but once you get into the
+javascript/nodejs ecosystem, that goes out the window and you will soon have a
+million lines of other peoples code (OPC) possibly executing on your system that
+you do not have time to vet.  That's okay for a lot of applications I guess but
+you should never do this on a machine that you might use to do your taxes, login
+to your bank, etc.  So this is just a pattern I have used to compartmentalize
+these activities.  I think the correct way of doing developemnt these days is to
+only use "ephemeral development workstations" all the time and so we need more
+examples on how to do this.  Obviously this has already been done using virtual
+machines, vagrant, teraform/ansible, etc.; this is just another method.
+
+** Example Usage
+
+First create a container image using the Makefile target 'image':
+
+#+BEGIN_SRC shell
+make image
+#+END_SRC
+
+This creates an OCI compatible container image that can be launced for building
+and executing the code.
+
+To start the Elm reactor up, use the reactor target:
+
+#+BEGIN_SRC shell
+make reactor
+#+END_SRC
+
+Then you can simply point your web browser to: http://localhost:8000 which is
+mapped to the elm reactor process running within the container.
