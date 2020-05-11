@@ -1,7 +1,7 @@
 # GNU Make Makefile
 
 # name of your container image
-CNAME=elmdev
+CNAME=devbox
 
 # the shared directory path between the host and the container image
 # this should match WORKDIR and VOLUME in Dockerfile
@@ -11,12 +11,14 @@ DIR := ${CURDIR}
 
 all: image
 
-# start the elm reactor out of the current directory in the container
+# start the lang specific targets
+
 reactor:
 	podman run -it -p 8000:8000 -v $PWD:/app:z localhost/elmdev elm reactor
 
+# make the initial image
 image:
-	podman build -t elmdev .
+	podman build -t devbox .
 
 .PHONY: clean
 

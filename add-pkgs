@@ -7,11 +7,17 @@ apk add --no-cache \
     patch sudo bash libjpeg-turbo libjpeg-turbo-dev \
     nodejs npm sqlite sqlite-dev sqlite-libs
 
+# elm installation
 curl -L -o elm.gz https://github.com/elm/compiler/releases/download/0.19.1/binary-for-linux-64-bit.gz
 gunzip elm.gz
 mv -v elm /usr/bin
 chmod a+x /usr/bin/elm
 npm install -g --unsafe elm-test
+
+# rust install specifying the musl compatible version
+wget https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-musl/rustup-init
+chmod a+rx ./rustup-init
+./rustup-init -y
 
 echo ""
 echo "add pkg script completed"

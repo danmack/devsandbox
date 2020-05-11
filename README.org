@@ -1,8 +1,8 @@
-* develop elm in a container template
+* developing in a sandbox template
 
-This project demonstrates how one can do elm (or other languages) software
-development without tainting or putting your laptop/workstation at risk from all
-the dependencies.
+This project demonstrates how one can do elm, rust, js (or other
+languages) software development without tainting or putting your
+laptop/workstation at risk from all the dependencies.
 
 This examples relies on using podman on linux used in the non-root mode.  All
 the software is downloaded implicitly or explicitly within the container only.
@@ -37,3 +37,6 @@ make reactor
 
 Then you can simply point your web browser to: http://localhost:8000 which is
 mapped to the elm reactor process running within the container.
+
+For other languages, it's basically the same type of process.
+
