@@ -19,6 +19,13 @@ wget https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-musl/rustup-i
 chmod a+rx ./rustup-init
 ./rustup-init -y
 
+cat <<EOFa >> /root/.ashrc
+export PATH="$HOME/.cargo/bin:$PATH"
+EOFa
+
+export PATH="$HOME/.cargo/bin:$PATH"
+rustc --version
+
 echo ""
 echo "add pkg script completed"
 echo ""

@@ -14,7 +14,13 @@ all: image
 # start the lang specific targets
 
 reactor:
-	podman run -it -p 8000:8000 -v $PWD:/app:z localhost/elmdev elm reactor
+	podman run -it -p 8000:8000 -v ${PWD}:/app:z localhost/${CNAME} elm reactor
+
+shell:
+	podman run -it -p 8000:8000 -v ${PWD}:/app:z localhost/${CNAME} ash
+
+newproj:
+	podman run -it -p 8000:8000 -v ${PWD}:/app:z localhost/${CNAME} cargo new ${CNAME}
 
 # make the initial image
 image:
